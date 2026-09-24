@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админ панел — ANVAR MOTORS</title>
+  <link rel="icon" href="anvar-motors-logo.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-shell">
+    <div class="admin-top">
+      <div class="brand">
+        <img class="site-logo" src="anvar-motors-logo.png" alt="ANVAR MOTORS" width="48" height="48" style="border-radius:50%;box-shadow:0 0 0 2px var(--accent)" />
+        <div>
+          <div class="brand-name">ANVAR <span>MOTORS</span></div>
+          <div style="color:var(--muted);font-size:0.85rem;font-weight:600">Админ панел</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+        <a class="btn btn-ghost" href="index.html">← Ба сайт</a>
+        <button class="btn btn-ghost hidden" id="logoutBtn" type="button">Баромад</button>
+      </div>
+    </div>
+
+    <section class="login-card" id="loginCard">
+      <h1>Воридшавӣ</h1>
+      <p>Барои идора кардани аксҳо, матнҳо ва линкҳо ворид шавед.</p>
+      <form class="form-grid" id="loginForm">
+        <div class="form-row">
+          <label for="password">Рамз</label>
+          <input id="password" type="password" placeholder="Рамзи админ" required autocomplete="current-password" />
+        </div>
+        <button class="btn btn-primary" type="submit">Ворид шудан</button>
+        <p class="hint" id="defaultPasswordHint">Рамзи пешфарз: <strong>anvar2026</strong></p>
+        <p id="loginError" class="hint" style="color:#ffb4ae"></p>
+      </form>
+    </section>
+
+    <section class="admin-panel hidden" id="adminPanel">
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="products" type="button">Маҳсулот / Аксҳо</button>
+        <button class="tab-btn" data-tab="texts" type="button">Матнҳои сайт</button>
+        <button class="tab-btn" data-tab="branding" type="button">Лого ва омор</button>
+        <button class="tab-btn" data-tab="contacts" type="button">Телефон ва соцсетҳо</button>
+        <button class="tab-btn" data-tab="password" type="button">Иваз кардани рамз</button>
+      </div>
+
+      <!-- PRODUCTS -->
+      <div class="tab-panel active" id="tab-products">
+        <h2 style="margin-bottom:1rem;font-size:1.35rem">Илова / таҳрири маҳсулот</h2>
+        <form class="form-grid" id="productForm">
+          <input type="hidden" id="productId" />
+          <div class="two-col">
+            <div class="form-row">
+              <label for="productName">Номи маҳсулот</label>
+              <input id="productName" required placeholder="Масалан: Филтри ҳаво" />
+            </div>
+            <div class="form-row">
+              <label for="productCategory">Категория</label>
+              <input id="productCategory" placeholder="Филтрҳо, Тормоз, Равған..." />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="productDesc">Тавсиф</label>
+            <textarea id="productDesc" placeholder="Маълумоти кӯтоҳ дар бораи маҳсулот"></textarea>
+          </div>
+          <div class="two-col">
+            <div class="form-row">
+              <label for="productPrice">Нарх</label>
+              <input id="productPrice" placeholder="Масалан: 150 с." />
+            </div>
+            <div class="form-row">
+              <label for="productImageFile">Акс аз компютер</label>
+              <input id="productImageFile" type="file" accept="image/*" />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="productImageUrl">ё силкаи акс (URL)</label>
+            <input id="productImageUrl" placeholder="https://..." />
+            <img id="imagePreview" class="preview-img" alt="Пешнамоиш" />
+          </div>
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+            <button class="btn btn-primary" type="submit" id="saveProductBtn">Захира кардан</button>
+            <button class="btn btn-ghost" type="button" id="resetProductBtn">Тоза кардан</button>
+          </div>
+        </form>
+        <div class="admin-list" id="adminProductList"></div>
+      </div>
+
+      <!-- TEXTS -->
+      <div class="tab-panel" id="tab-texts">
+        <h2 style="margin-bottom:1rem;font-size:1.35rem">Матнҳои саҳифаи асосӣ</h2>
+        <form class="form-grid" id="textsForm">
+          <div class="form-row">
+            <label for="heroTitle">Сарлавҳаи hero</label>
+            <input id="heroTitle" />
+          </div>
+          <div class="form-row">
+            <label for="heroText">Матни hero</label>
+            <textarea id="heroText"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="catalogTitle">Сарлавҳаи каталог</label>
+            <input id="catalogTitle" />
+          </div>
+          <div class="form-row">
+            <label for="catalogText">Матни каталог</label>
+            <textarea id="catalogText"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="aboutTitle">Сарлавҳаи «Дар бораи мо»</label>
+            <input id="aboutTitle" />
+          </div>
+          <div class="form-row">
+            <label for="aboutText">Матни «Дар бораи мо»</label>
+            <textarea id="aboutText"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="contactTitle">Сарлавҳаи тамос</label>
+            <input id="contactTitle" />
+          </div>
+          <div class="form-row">
+            <label for="contactText">Матни тамос</label>
+            <textarea id="contactText"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="footerText">Матни поёнӣ (footer)</label>
+            <input id="footerText" />
+          </div>
+          <button class="btn btn-primary" type="submit">Захираи матнҳо</button>
+        </form>
+      </div>
+
+      <!-- BRANDING: LOGO + STATS -->
+      <div class="tab-panel" id="tab-branding">
+        <h2 style="margin-bottom:1rem;font-size:1.35rem">Логотип ва оморҳо</h2>
+        <form class="form-grid" id="brandingForm">
+          <div class="form-row">
+            <label for="logoFile">Логотипи нав (аз компютер)</label>
+            <input id="logoFile" type="file" accept="image/*" />
+            <p class="hint">Акс ҳадди ақал мураббаъ бошад. Андозаи пешниҳодшуда: то 2MB.</p>
+            <img id="logoPreview" class="preview-img show" src="anvar-motors-logo.png" alt="Логотип" style="width:110px;height:110px;border-radius:50%;object-fit:cover;margin-top:0.75rem" />
+          </div>
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+            <button class="btn btn-ghost" type="button" id="resetLogoBtn">Бозгашт ба логотипи аслӣ</button>
+          </div>
+
+          <h3 style="margin-top:0.5rem;font-size:1.1rem">Оморҳо (масалан: 7 сол таҷриба)</h3>
+          <div class="two-col">
+            <div class="form-row">
+              <label for="stat1Value">Омори 1 — рақам</label>
+              <input id="stat1Value" placeholder="500+" />
+            </div>
+            <div class="form-row">
+              <label for="stat1Label">Омори 1 — матн</label>
+              <input id="stat1Label" placeholder="Номгӯи қисмҳо" />
+            </div>
+          </div>
+          <div class="two-col">
+            <div class="form-row">
+              <label for="stat2Value">Омори 2 — рақам</label>
+              <input id="stat2Value" placeholder="7" />
+            </div>
+            <div class="form-row">
+              <label for="stat2Label">Омори 2 — матн</label>
+              <input id="stat2Label" placeholder="Сол таҷриба" />
+            </div>
+          </div>
+          <div class="two-col">
+            <div class="form-row">
+              <label for="stat3Value">Омори 3 — рақам</label>
+              <input id="stat3Value" placeholder="24/7" />
+            </div>
+            <div class="form-row">
+              <label for="stat3Label">Омори 3 — матн</label>
+              <input id="stat3Label" placeholder="Дастгирӣ" />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="aboutNote">Матни зери оморҳо</label>
+            <textarea id="aboutNote"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Захира кардан</button>
+        </form>
+      </div>
+
+      <!-- CONTACTS -->
+      <div class="tab-panel" id="tab-contacts">
+        <h2 style="margin-bottom:1rem;font-size:1.35rem">Телефонҳо ва силкаҳо</h2>
+        <form class="form-grid" id="contactsForm">
+          <div class="form-row">
+            <label for="phones">Рақамҳои телефон (ҳар сатр як рақам)</label>
+            <textarea id="phones" placeholder="+992 90 000 00 00"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="instagram">Силкаи Instagram</label>
+            <input id="instagram" placeholder="https://instagram.com/..." />
+          </div>
+          <div class="form-row">
+            <label for="telegram">Силкаи Telegram</label>
+            <input id="telegram" placeholder="https://t.me/..." />
+          </div>
+          <div class="form-row">
+            <label for="whatsapp">Силкаи WhatsApp</label>
+            <input id="whatsapp" placeholder="https://wa.me/99290..." />
+          </div>
+          <div class="form-row">
+            <label for="publicUrl">Силкаи сайт (барои мубодила)</label>
+            <input id="publicUrl" placeholder="https://anvarmotors.tj ё https://..." />
+            <p class="hint">Вақте сайт дар интернет ҷойгир шуд, суроғаи пурраашро ин ҷо нависед. Ҳамин силка нусха ва мубодила мешавад.</p>
+          </div>
+          <div class="form-row">
+            <label for="shareText">Матни мубодила</label>
+            <input id="shareText" placeholder="ANVAR MOTORS — қисмҳои эҳтиётии мошин..." />
+          </div>
+          <button class="btn btn-primary" type="submit">Захираи тамос</button>
+        </form>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="tab-panel" id="tab-password">
+        <h2 style="margin-bottom:1rem;font-size:1.35rem">Иваз кардани рамзи админ</h2>
+        <p class="hint" style="margin-bottom:1rem">Рамзи куҳнаро ворид кунед ва рамзи нав гузоред.</p>
+        <form class="form-grid" id="passwordForm">
+          <div class="form-row">
+            <label for="currentPassword">Рамзи ҳозира</label>
+            <input id="currentPassword" type="password" required autocomplete="current-password" />
+          </div>
+          <div class="form-row">
+            <label for="newPassword">Рамзи нав</label>
+            <input id="newPassword" type="password" required minlength="4" autocomplete="new-password" placeholder="Ҳадди ақал 4 аломат" />
+          </div>
+          <div class="form-row">
+            <label for="confirmPassword">Такрори рамзи нав</label>
+            <input id="confirmPassword" type="password" required minlength="4" autocomplete="new-password" />
+          </div>
+          <p id="passwordError" class="hint" style="color:#ffb4ae"></p>
+          <button class="btn btn-primary" type="submit">Рамзро иваз кардан</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast">Захира шуд</div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

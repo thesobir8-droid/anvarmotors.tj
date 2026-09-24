@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ANVAR MOTORS — Қисмҳои эҳтиётии мошин</title>
+  <meta name="description" content="ANVAR MOTORS — мағозаи қисмҳои эҳтиётии мошин. Филтр, тормоз, равған ва лавозимот." />
+  <meta property="og:title" content="ANVAR MOTORS" />
+  <meta property="og:description" content="Қисмҳои эҳтиётии мошин — сифати баланд ва нархи муносиб." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="anvar-motors-logo.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <img class="site-logo" src="anvar-motors-logo.png" alt="ANVAR MOTORS" />
+        <div class="brand-name">ANVAR <span>MOTORS</span></div>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Меню">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#catalog">Каталог</a></li>
+        <li><a href="#about">Дар бораи мо</a></li>
+        <li><a href="#contact">Тамос</a></li>
+        <li><a href="#shareCard">Мубодила</a></li>
+        <li><a class="nav-cta" href="#contact">Заказ додан</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <img class="hero-logo site-logo" src="anvar-motors-logo.png" alt="Логотипи ANVAR MOTORS" />
+        <h1 class="hero-brand">ANVAR <span>MOTORS</span></h1>
+        <p class="hero-title" id="heroTitle"></p>
+        <p class="hero-text" id="heroText"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalog">Дидани каталог</a>
+          <a class="btn btn-ghost" href="#shareCard">Мубодила кардан</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Маҳсулот</div>
+          <h2 class="section-title" id="catalogTitle"></h2>
+          <p class="section-desc" id="catalogText"></p>
+        </div>
+        <div class="catalog-toolbar">
+          <input class="search-input" id="searchInput" type="search" placeholder="Ҷустуҷӯи маҳсулот..." />
+        </div>
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div>
+          <div class="section-head">
+            <div class="section-kicker">Ширкат</div>
+            <h2 class="section-title" id="aboutTitle"></h2>
+            <p class="section-desc" id="aboutText"></p>
+          </div>
+        </div>
+        <div class="about-panel">
+          <div class="stat-row" id="statsRow"></div>
+          <p id="aboutNote" style="color: var(--muted);"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Алоқа</div>
+          <h2 class="section-title" id="contactTitle"></h2>
+          <p class="section-desc" id="contactText"></p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.35rem;">Рақамҳои телефон</h3>
+            <p style="color: var(--muted);">Занг занед — мо ҳамеша дар хизмат ҳастем.</p>
+            <div class="phones" id="phonesList"></div>
+          </div>
+          <div class="social-card">
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.35rem;">Шабакаҳои иҷтимоӣ</h3>
+            <p style="color: var(--muted);">Инстаграм, Телеграм ва Ватсап.</p>
+            <div class="social-list" id="socialList"></div>
+          </div>
+        </div>
+
+        <div class="share-card" id="shareCard">
+          <div class="share-head">
+            <h3>Сайтро мубодила кунед</h3>
+            <p>Силкаро нусха кунед ё тавассути WhatsApp ва Telegram фиристед.</p>
+          </div>
+          <div class="share-link-row">
+            <input class="search-input" id="shareUrlInput" type="text" readonly aria-label="Силкаи сайт" />
+            <button class="btn btn-primary" type="button" id="copyLinkBtn">Нусха кардан</button>
+          </div>
+          <div class="share-actions">
+            <button class="share-btn wa" type="button" id="shareWhatsAppBtn">
+              <span class="share-btn-icon" aria-hidden="true"></span>
+              WhatsApp
+            </button>
+            <button class="share-btn tg" type="button" id="shareTelegramBtn">
+              <span class="share-btn-icon" aria-hidden="true"></span>
+              Telegram
+            </button>
+            <button class="share-btn more" type="button" id="shareNativeBtn">
+              Дигар…
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img class="site-logo" src="anvar-motors-logo.png" alt="" />
+        <span id="footerText"></span>
+      </div>
+      <a class="admin-link" href="admin.html">Админ панел</a>
+    </div>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
